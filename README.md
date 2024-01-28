@@ -1,3 +1,6 @@
+# You can see the Blog App UI
+https://www.figma.com/file/kNlXYccXxcCgmC8TM00lq5/blog-design?type=design&node-id=0-1&mode=design&t=446rKqcnR5bC7wck-0
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
