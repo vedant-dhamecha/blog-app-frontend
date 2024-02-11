@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#1565D8",
-        soft: "183B56",
+        soft: "#183B56",
       },
       fontFamily: {
         opensans: ["'Open Sans'", "sans-serif"],
