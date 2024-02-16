@@ -4,6 +4,8 @@ import Post1Image from "../assests/posts/Post1.jpg";
 import PostProfileImage from "../assests/posts/post-profile.svg";
 import CtaImage from "../assests/CtaImage.png";
 import LogoFooter from "../assests/LogoFooter.svg";
+const samplePostImage = "/images/sample.jpg";
+const userImage = "/images/user.png";
 
 const images = {
   Logo,
@@ -11,6 +13,8 @@ const images = {
   Post1Image,
   PostProfileImage,
   CtaImage,
+  samplePostImage,
+  userImage,
   LogoFooter,
 };
 
