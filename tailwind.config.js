@@ -18,10 +18,10 @@ module.exports = {
         "light-pink": "#FFB6C1",
         "dark-pink": "#A61C37",
         "dark-blue": "#0D2436",
-        "light": "#5A7184", //dark-light
-        "gray": "#5A7184", // Replace with the actual color value
+        light: "#5A7184", //dark-light
+        gray: "#5A7184", // Replace with the actual color value
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
