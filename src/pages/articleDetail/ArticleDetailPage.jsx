@@ -32,6 +32,10 @@ const ArticleDetailPage = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         if (!slug || !data) {

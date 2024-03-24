@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const NavItemsInfo = [
   { name: "Home", type: "link", href: "/" },
-  { name: "Articles", type: "link", href: "/articles" },
+  { name: "Blog", type: "link", href: "/blog" },
   {
     name: "Pages",
     type: "dropdown",
