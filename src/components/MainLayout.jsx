@@ -2,10 +2,10 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, isDarkMode}) => {
   return (
     <div>
-      <Header />
+      <Header isDarkMode={isDarkMode}/>
       {children}
       <Footer/>
     </div>

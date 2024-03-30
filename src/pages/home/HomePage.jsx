@@ -4,9 +4,9 @@ import Hero from "./container/Hero";
 import Articles from "./container/Articles";
 import CTA from "./container/CTA";
 
-const HomePage = () => {
+const HomePage = ({isDarkMode}) => {
   return (
-    <MainLayout>
+    <MainLayout isDarkMode={isDarkMode}>
       <Hero/>
       <Articles/>
       <CTA/>

@@ -29,7 +29,7 @@ function App() {
     <div className="App font-opensans">
       <div className={isDarkMode ? "dark" : "light"}>
         <Routes>
-          <Route index path="/" element={<HomePage />} />
+          <Route index path="/" element={<HomePage isDarkMode={isDarkMode}/>} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<ArticleDetailPage />} />
           <Route path="/register" element={<RegisterPage />} />

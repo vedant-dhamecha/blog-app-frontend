@@ -27,7 +27,7 @@ const Hero = () => {
     queryKey: ["posts"],
     onError: (error) => {
       toast.error(error.message);
-      console.log(error);
+      
     },
   });
 
