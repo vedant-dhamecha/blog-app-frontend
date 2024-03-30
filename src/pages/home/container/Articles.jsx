@@ -7,7 +7,7 @@ import ArticleCardSkeleton from "../../../components/ArticleCardSkeleton";
 import ErrorMessage from "../../../components/ErrorMessage";
 import { Link } from "react-router-dom";
 
-const Articles = () => {
+const Articles = ({isDarkMode}) => {
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getAllPosts("", 1, 6),
     queryKey: ["posts"],
@@ -17,7 +17,7 @@ const Articles = () => {
   });
   console.log(isError);
   return (
-    <section className="flex flex-col container mx-auto px-5 py-10">
+    <section className="flex flex-col container mx-auto px-5 py-10 dark:bg-[#050e15]">
       <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
         {isLoading ? (
           [...Array(3)].map((item, index) => (
@@ -34,13 +34,14 @@ const Articles = () => {
               key={post._id}
               post={post}
               className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+              isDarkMode={isDarkMode}
             />
           ))
         )}
       </div>
       <Link
         to="/blog"
-        className="mx-auto flex items-center gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg"
+        className="mx-auto flex items-center gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg hover:bg-blue-500 hover:text-white"
       >
         <span>More articles</span>
         <FaArrowRight className="w-3 h-3" />

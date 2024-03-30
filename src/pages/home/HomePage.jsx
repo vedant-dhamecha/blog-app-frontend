@@ -7,9 +7,9 @@ import CTA from "./container/CTA";
 const HomePage = ({isDarkMode}) => {
   return (
     <MainLayout isDarkMode={isDarkMode}>
-      <Hero/>
-      <Articles/>
-      <CTA/>
+      <Hero isDarkMode={isDarkMode}/>
+      <Articles isDarkMode={isDarkMode}/>
+      <CTA isDarkMode={isDarkMode}/>
     </MainLayout>
   );
 };

@@ -5,10 +5,10 @@ import { AiOutlineClose } from "react-icons/ai";
 import { images, stables } from "../constants";
 import { Link } from "react-router-dom";
 
-const ArticleCard = ({ post, className }) => {
+const ArticleCard = ({ post, className, isDarkMode }) => {
   return (
     <div
-      className={`rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] ${className}`}
+      className={`rounded-xl overflow-hidden dark:bg-[#0D0D0D] dark:shadow-gray-700/50 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] ${className}`}
     >
       <Link to={`/blog/${post.slug}`}>
         <img
@@ -23,10 +23,10 @@ const ArticleCard = ({ post, className }) => {
       </Link>
       <div className="p-5">
         <Link to={`/blog/${post.slug}`}>
-          <h2 className="font-roboto font-bold text-xl text-dark-soft md:text-2xl lg:text-[28px]">
+          <h2 className="font-roboto font-bold text-xl text-dark-soft md:text-2xl lg:text-[28px] dark:text-[#1E496A]">
             {post.title}
           </h2>
-          <p className="text-dark-light mt-3 text-sm md:text-lg">
+          <p className="text-dark-light mt-3 text-sm md:text-lg dark:text-[#1E496A]">
             {post.caption}
           </p>
         </Link>
@@ -42,28 +42,28 @@ const ArticleCard = ({ post, className }) => {
               className="w-9 h-9 md:w-10 md:h-10 rounded-full"
             />
             <div className="flex flex-col">
-              <h4 className="font-bold italic text-dark-soft text-sm md:text-base">
+              <h4 className="font-bold italic text-dark-soft text-sm md:text-base dark:text-[#1E496A]">
                 {post.user.name}
               </h4>
               <div className="flex items-center gap-x-2">
                 <span
                   className={`${
-                    post.user.verified ? "bg-[#36B37E]" : "bg-red-500"
+                    post.user.verified ? "bg-[#36B37E] dark:bg-[#3d7f64]" : "bg-red-500 dark:bg-[#8e3d3d]"
                   } w-fit bg-opacity-20 p-1.5 rounded-full`}
                 >
                   {post.user.verified ? (
-                    <BsCheckLg className="w-1.5 h-1.5 text-[#36B37E]" />
+                    <BsCheckLg className="w-1.5 h-1.5 text-[#36B37E] dark:text-[#23362e]" />
                   ) : (
-                    <AiOutlineClose className="w-1.5 h-1.5 text-red-500" />
+                    <AiOutlineClose className="w-1.5 h-1.5 text-red-500 dark:text-[#23362e]" />
                   )}
                 </span>
-                <span className="italic text-dark-light text-xs md:text-sm">
+                <span className="italic text-dark-light dark:text-[#5A7184] text-xs md:text-sm">
                   {post.user.verified ? "Verified" : "Unverified"} writer
                 </span>
               </div>
             </div>
           </div>
-          <span className="font-bold text-dark-light italic text-sm md:text-base">
+          <span className="font-bold text-dark-light dark:text-[#5A7184] italic text-sm md:text-base">
             {new Date(post.createdAt).getDate()}{" "}
             {new Date(post.createdAt).toLocaleString("default", {
               month: "long",

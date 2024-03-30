@@ -7,7 +7,7 @@ const MainLayout = ({ children, isDarkMode}) => {
     <div>
       <Header isDarkMode={isDarkMode}/>
       {children}
-      <Footer/>
+      <Footer isDarkMode={isDarkMode}/>
     </div>
   );
 };

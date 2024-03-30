@@ -9,9 +9,9 @@ import {
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 
-const Footer = () => {
+const Footer = (isDarkMode) => {
   return (
-    <section className="bg-dark-blue">
+    <section className="bg-dark-blue dark:bg-[#050e15]">
       <footer className="container mx-auto grid grid-cols-10 px-5 py-10 gap-y-10 gap-x-5 md:pt-20 md:grid-cols-12 lg:col-auto-start lg:gap-x-10">
         <div className="col-span-5 md:col-span-4 lg:col-span-2">
           <h3 className="text-[#5A7184] font-bold md:text-lg">Product</h3>
@@ -118,11 +118,11 @@ const Footer = () => {
           </ul>
         </div>
         <div className="hidden md:flex flex-col items-center space-y-4 md:col-span-12 lg:col-span-12">
-          <div className="bg-dark-hard text-white p-3 rounded-full">
+          <div className="bg-dark-hard text-white dark:bg-[#1D83E9] dark:text-[#050e15] p-3 rounded-full">
             <AiFillHeart className="w-7 h-auto" />
           </div>
           <p className="font-bold text-[#5A7184]">
-            Copyright@2024 | Developed By Vedant Dhamecha.
+            Copyright@2024 | Vedant Dhamecha
           </p>
         </div>
       </footer>
