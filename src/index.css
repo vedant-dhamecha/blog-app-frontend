@@ -10,4 +10,9 @@
   .active-editor-btn {
     @apply text-slate-800 bg-slate-200;
   }
+
+}
+
+* {
+  @apply transition-colors duration-200;
 }
