@@ -9,7 +9,7 @@ import MainLayout from "../../components/MainLayout";
 import { signup } from "../../services/index/users";
 import { userActions } from "../../store/reducers/userReducers";
 
-const RegisterPage = () => {
+const RegisterPage = ({isDarkMode}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
@@ -57,10 +57,10 @@ const RegisterPage = () => {
   const password = watch("password");
 
   return (
-    <MainLayout>
-      <section className="container mx-auto px-5 py-10">
+    <MainLayout isDarkMode={isDarkMode}>
+      <section className="container mx-auto px-5 py-10 dark:bg-[#050e15]">
         <div className="w-full max-w-sm mx-auto">
-          <h1 className="font-Roboto text-2xl font-bold text-center text-dark-hard mb-8">
+          <h1 className="font-Roboto text-2xl font-bold text-center text-dark-hard dark:text-[#1E496A] mb-8">
             Sign Up
           </h1>
           <form onSubmit={handleSubmit(submitHandler)}>
@@ -85,8 +85,8 @@ const RegisterPage = () => {
                   },
                 })}
                 placeholder="Enter name"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                  errors.name ? "border-red-500" : "border-[#c3cad9]"
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white  dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                  errors.name ? "border-red-500" : (isDarkMode ? "border-[#30394C]" : "border-[#c3cad9]")
                 }`}
               />
               {errors.name?.message && (
@@ -117,8 +117,8 @@ const RegisterPage = () => {
                   },
                 })}
                 placeholder="Enter email"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                  errors.email ? "border-red-500" : "border-[#c3cad9]"
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white  dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                  errors.email ? "border-red-500" : (isDarkMode ? "border-[#30394C]" : "border-[#c3cad9]")
                 }`}
               />
               {errors.email?.message && (
@@ -148,8 +148,8 @@ const RegisterPage = () => {
                   },
                 })}
                 placeholder="Enter password"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                  errors.password ? "border-red-500" : "border-[#c3cad9]"
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                  errors.password ? "border-red-500" : (isDarkMode ? "border-[#30394C]" : "border-[#c3cad9]")
                 }`}
               />
               {errors.password?.message && (
@@ -180,8 +180,8 @@ const RegisterPage = () => {
                   },
                 })}
                 placeholder="Enter confirm password"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                  errors.confirmPassword ? "border-red-500" : "border-[#c3cad9]"
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white  dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                  errors.confirmPassword ? "border-red-500" : (isDarkMode ? "border-[#30394C]" : "border-[#c3cad9]")
                 }`}
               />
               {errors.confirmPassword?.message && (
@@ -194,7 +194,7 @@ const RegisterPage = () => {
             <button
               type="submit"
               disabled={!isValid || isLoading}
-              className="bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg mb-6 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="bg-primary text-white dark:text-[#0D0D0D] font-bold text-lg py-4 px-8 w-full rounded-lg mb-6 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               Register
             </button>

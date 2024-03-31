@@ -32,9 +32,9 @@ function App() {
           <Route index path="/" element={<HomePage isDarkMode={isDarkMode}/>} />
           <Route path="/blog" element={<BlogPage isDarkMode={isDarkMode}/>} />
           <Route path="/blog/:slug" element={<ArticleDetailPage isDarkMode={isDarkMode}/>} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/register" element={<RegisterPage isDarkMode={isDarkMode}/>} />
+          <Route path="/login" element={<LoginPage isDarkMode={isDarkMode}/>} />
+          <Route path="/profile" element={<ProfilePage isDarkMode={isDarkMode}/>} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Admin />} />
             <Route path="comments" element={<Comments />} />

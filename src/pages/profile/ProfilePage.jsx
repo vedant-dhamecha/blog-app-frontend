@@ -11,7 +11,7 @@ import { userActions } from "../../store/reducers/userReducers";
 import { toast } from "react-hot-toast";
 import { useMemo } from "react";
 
-const ProfilePage = () => {
+const ProfilePage = ({ isDarkMode }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
@@ -75,10 +75,13 @@ const ProfilePage = () => {
   };
 
   return (
-    <MainLayout>
-      <section className="container mx-auto px-5 py-10">
+    <MainLayout isDarkMode={isDarkMode}>
+      <section
+        className={`container mx-auto px-5 py-10 ${isDarkMode ? "dark:bg-[#050e15]" : ""}`}
+      >
         <div className="w-full max-w-sm mx-auto">
           <ProfilePicture avatar={profileData?.avatar} />
+          <br></br>
           <form onSubmit={handleSubmit(submitHandler)}>
             <div className="flex flex-col mb-6 w-full">
               <label
@@ -101,9 +104,9 @@ const ProfilePage = () => {
                   },
                 })}
                 placeholder="Enter name"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white  dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
                   errors.name ? "border-red-500" : "border-[#c3cad9]"
-                }`}
+                } ${isDarkMode ? "dark:border-[#30394C]" : ""}`}
               />
               {errors.name?.message && (
                 <p className="text-red-500 text-xs mt-1">
@@ -133,9 +136,9 @@ const ProfilePage = () => {
                   },
                 })}
                 placeholder="Enter email"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white  dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
                   errors.email ? "border-red-500" : "border-[#c3cad9]"
-                }`}
+                } ${isDarkMode ? "dark:border-[#30394C]" : ""}`}
               />
               {errors.email?.message && (
                 <p className="text-red-500 text-xs mt-1">
@@ -155,9 +158,9 @@ const ProfilePage = () => {
                 id="password"
                 {...register("password")}
                 placeholder="Enter new password"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+                className={`placeholder:text-[#959ead] text-dark-hard dark:text-white  dark:bg-[#0D0D0D] mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
                   errors.password ? "border-red-500" : "border-[#c3cad9]"
-                }`}
+                } ${isDarkMode ? "dark:border-[#30394C]" : ""}`}
               />
               {errors.password?.message && (
                 <p className="text-red-500 text-xs mt-1">
@@ -168,7 +171,7 @@ const ProfilePage = () => {
             <button
               type="submit"
               disabled={!isValid || profileIsLoading || updateProfileIsLoading}
-              className="bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg mb-6 disabled:opacity-70 disabled:cursor-not-allowed"
+              className={`bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg mb-6 disabled:opacity-70 disabled:cursor-not-allowed ${isDarkMode ? "dark:text-[#0D0D0D] dark:bg-[#2196f3]" : ""}`}
             >
               Update
             </button>
