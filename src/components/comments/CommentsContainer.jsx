@@ -16,6 +16,7 @@ const CommentsContainer = ({
   logginedUserId,
   comments,
   postSlug,
+  isDarkMode,
 }) => {
   const queryClient = useQueryClient();
   const userState = useSelector((state) => state.user);
@@ -95,6 +96,7 @@ const CommentsContainer = ({
         btnLabel="Send"
         formSubmitHanlder={(value) => addCommentHandler(value)}
         loading={isLoadingNewComment}
+        isDarkMode={isDarkMode}
       />
       <div className="space-y-4 mt-8">
         {comments.map((comment) => (
@@ -108,6 +110,7 @@ const CommentsContainer = ({
             updateComment={updateCommentHandler}
             deleteComment={deleteCommentHandler}
             replies={comment.replies}
+            isDarkMode={isDarkMode}
           />
         ))}
       </div>

@@ -6,6 +6,7 @@ const CommentForm = ({
   formCancelHandler = null,
   initialText = "",
   loading = false,
+  isDarkMode,
 }) => {
   const [value, setValue] = useState(initialText);
 
@@ -17,9 +18,9 @@ const CommentForm = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="flex flex-col items-end border border-primary rounded-lg p-4">
+      <div className="flex flex-col items-end border border-primary dark:border-[#76AFFF] rounded-lg p-4">
         <textarea
-          className="w-full focus:outline-none bg-transparent"
+          className="w-full focus:outline-none bg-transparent dark:text-white"
           rows="5"
           placeholder="Leave your comment here..."
           value={value}
@@ -38,7 +39,7 @@ const CommentForm = ({
             disabled={loading}
             type="submit"
             className="px-6 py-2.5 rounded-lg bg-primary
-         text-white font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
+         text-white dark:text-[#050e15] font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {btnLabel}
           </button>

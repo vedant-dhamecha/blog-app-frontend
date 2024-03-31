@@ -1,6 +1,6 @@
 import { images, stables } from "../../../../constants";
 import { deletePost, getAllPosts } from "../../../../services/index/posts";
-import Pagination from "../../../../components/Pagination";
+import Pagination from "../../../../components/PaginationAdmin";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useDataTable } from "../../../../hooks/useDataTable";

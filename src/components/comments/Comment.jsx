@@ -14,6 +14,7 @@ const Comment = ({
   updateComment,
   deleteComment,
   replies,
+  isDarkMode
 }) => {
   const isUserLoggined = Boolean(logginedUserId);
   const commentBelongsToUser = logginedUserId === comment.user._id;
@@ -30,7 +31,7 @@ const Comment = ({
 
   return (
     <div
-      className="flex flex-nowrap items-start gap-x-3 bg-[#F2F4F5] p-3 rounded-lg"
+      className="flex flex-nowrap items-start gap-x-3 bg-[#F2F4F5] dark:bg-[#181818] p-3 rounded-lg"
       id={`comment-${comment?._id}`}
     >
       <img
@@ -43,10 +44,10 @@ const Comment = ({
         className="w-9 h-9 object-cover rounded-full"
       />
       <div className="flex-1 flex flex-col">
-        <h5 className="font-bold text-dark-hard text-xs lg:text-sm">
+        <h5 className="font-bold text-dark-hard text-xs lg:text-sm dark:text-[#283646]">
           {comment.user.name}
         </h5>
-        <span className="text-xs text-dark-light">
+        <span className="text-xs text-dark-light dark:text-[#77808B]">
           {new Date(comment.createdAt).toLocaleDateString("en-US", {
             day: "numeric",
             month: "short",
@@ -55,7 +56,7 @@ const Comment = ({
           })}
         </span>
         {!isEditing && (
-          <p className="font-opensans mt-[10px] text-dark-light">
+          <p className="font-opensans mt-[10px] text-dark-light dark:text-[#77808B]">
             {comment.desc}
           </p>
         )}
@@ -65,9 +66,10 @@ const Comment = ({
             formSubmitHanlder={(value) => updateComment(value, comment._id)}
             formCancelHandler={() => setAffectedComment(null)}
             initialText={comment.desc}
+            isDarkMode={isDarkMode}
           />
         )}
-        <div className="flex items-center gap-x-3 text-dark-light font-roboto text-sm mt-3 mb-3">
+        <div className="flex items-center gap-x-3 text-dark-light dark:text-[#77808B] font-roboto text-sm mt-3 mb-3">
           {isUserLoggined && (
             <button
               className="flex items-center space-x-2"

@@ -31,7 +31,7 @@ function App() {
         <Routes>
           <Route index path="/" element={<HomePage isDarkMode={isDarkMode}/>} />
           <Route path="/blog" element={<BlogPage isDarkMode={isDarkMode}/>} />
-          <Route path="/blog/:slug" element={<ArticleDetailPage />} />
+          <Route path="/blog/:slug" element={<ArticleDetailPage isDarkMode={isDarkMode}/>} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<ProfilePage />} />

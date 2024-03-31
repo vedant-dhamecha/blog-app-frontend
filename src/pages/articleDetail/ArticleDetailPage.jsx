@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import parseJsonToHtml from "../../utils/parseJsonToHtml";
 import Editor from "../../components/editor/Editor";
 
-const ArticleDetailPage = () => {
+const ArticleDetailPage = ({isDarkMode}) => {
   const { slug } = useParams();
   const userState = useSelector((state) => state.user);
   const [breadCrumbsData, setbreadCrumbsData] = useState([]);
@@ -68,12 +68,13 @@ const ArticleDetailPage = () => {
   });
 
   return (
-    <MainLayout>
+    <MainLayout isDarkMode={isDarkMode}>
       {queryIsLoading ? (
         <ArticleDetailSkeleton />
       ) : isError ? (
         <ErrorMessage message="Couldn't fetch the post detail" />
       ) : (
+        <div  className="dark:bg-[#050e15]">
         <section className="container mx-auto max-w-5xl flex flex-col px-5 py-5 lg:flex-row lg:gap-x-5 lg:items-start">
           <article className="flex-1">
             <BreadCrumbs data={breadCrumbsData} />
@@ -90,13 +91,13 @@ const ArticleDetailPage = () => {
               {data?.categories.map((category) => (
                 <Link
                   to={`/blog?category=${category.name}`}
-                  className="text-primary text-sm font-roboto inline-block md:text-base"
+                  className="text-primary dark:text-[#C9E0F2] text-sm font-Roboto inline-block md:text-base"
                 >
-                  {category.name}
+                  {category?.name}
                 </Link>
               ))}
             </div>
-            <h1 className="text-xl font-medium font-roboto mt-4 text-dark-hard md:text-[26px]">
+            <h1 className="text-xl font-medium font-Roboto mt-4 text-dark-hard dark:text-[#1D72E9] md:text-[26px]">
               {data?.title}
             </h1>
             <div className="w-full">
@@ -109,6 +110,7 @@ const ArticleDetailPage = () => {
               className="mt-10"
               logginedUserId={userState?.userInfo?._id}
               postSlug={slug}
+              isDarkMode={isDarkMode}
             />
           </article>
           <div>
@@ -117,9 +119,10 @@ const ArticleDetailPage = () => {
               posts={postsData?.data}
               tags={data?.tags}
               className="mt-8 lg:mt-0 lg:max-w-xs"
+              isDarkMode={isDarkMode}
             />
             <div className="mt-7">
-              <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
+              <h2 className="font-Roboto dark:text-[#C9E0F2] font-medium text-dark-hard mb-4 md:text-xl">
                 Share on:
               </h2>
               <SocialShareButtons
@@ -129,6 +132,7 @@ const ArticleDetailPage = () => {
             </div>
           </div>
         </section>
+        </div>
       )}
     </MainLayout>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { getAllPosts } from "../../services/index/posts";
@@ -28,8 +28,6 @@ const BlogPage = ({isDarkMode}) => {
       console.log(error);
     },
   });
-
-  console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);
