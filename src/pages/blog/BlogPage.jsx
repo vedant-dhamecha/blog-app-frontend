@@ -12,7 +12,7 @@ import Search from "../../components/Search";
 
 let isFirstRun = true;
 
-const BlogPage = () => {
+const BlogPage = ({isDarkMode}) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchParamsValue = Object.fromEntries([...searchParams]);
@@ -50,8 +50,8 @@ const BlogPage = () => {
   };
 
   return (
-    <MainLayout>
-      <section className="flex flex-col container mx-auto px-5 py-10">
+    <MainLayout isDarkMode={isDarkMode}>
+      <section className="flex flex-col container mx-auto px-5 py-10 dark:bg-[#050e15]">
         <Search
           className="w-full max-w-xl mb-10"
           onSearchKeyword={handleSearch}
@@ -74,6 +74,7 @@ const BlogPage = () => {
                 key={post._id}
                 post={post}
                 className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+                isDarkMode={isDarkMode}
               />
             ))
           )}
@@ -83,6 +84,7 @@ const BlogPage = () => {
             onPageChange={(page) => handlePageChange(page)}
             currentPage={currentPage}
             totalPageCount={JSON.parse(data?.headers?.["x-totalpagecount"])}
+            isDarkMode={isDarkMode}
           />
         )}
       </section>

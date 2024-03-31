@@ -30,7 +30,7 @@ function App() {
       <div className={isDarkMode ? "dark" : "light"}>
         <Routes>
           <Route index path="/" element={<HomePage isDarkMode={isDarkMode}/>} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog" element={<BlogPage isDarkMode={isDarkMode}/>} />
           <Route path="/blog/:slug" element={<ArticleDetailPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
