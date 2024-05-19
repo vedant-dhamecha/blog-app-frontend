@@ -28,7 +28,7 @@ const Hero = ({ isDarkMode }) => {
     },
   });
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);

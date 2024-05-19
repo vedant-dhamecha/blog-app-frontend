@@ -9,26 +9,23 @@ import { Link, useNavigate } from "react-router-dom";
 
 const NavItemsInfo = [
   { name: "Home", type: "link", href: "/" },
-  { name: "Blog", type: "link", href: "/blog" },
+  { name: "Blogosphere", type: "link", href: "/blog" },
+  { name: "Pricing", type: "link", href: "/pricing" },
   {
-    name: "Pages",
+    name: "Insight",
     type: "dropdown",
     items: [
-      { title: "About us", href: "/about" },
-      { title: "Contact us", href: "/contact" },
+      { title: "About us", href: "https://www.aliteprojects.com/aboutus" },
+      { title: "Contact us", href: "https://www.aliteprojects.com/contactus" },
     ],
   },
-  { name: "Pricing", type: "link", href: "/pricing" },
-  { name: "Faq", type: "link", href: "/faq" },
 ];
 
 const NavItem = ({ item }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const toggleDropdownHandler = () => {
-    setDropdown((curState) => {
-      return !curState;
-    });
+    setDropdown((curState) => !curState);
   };
 
   return (
@@ -74,26 +71,18 @@ const NavItem = ({ item }) => {
   );
 };
 
-const Header = ({isDarkMode}) => {
+const Header = ({ isDarkMode }) => {
   const [navIsVisible, setNavIsVisible] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const [profileDrowpdown, setProfileDrowpdown] = useState(false);
   const navVisibilityHandler = () => {
-    setNavIsVisible((curState) => {
-      return !curState;
-    });
+    setNavIsVisible((curState) => !curState);
   };
   const logoutHandler = () => {
     dispatch(logout());
   };
-
-  // const [isDarkMode, setIsDarkMode] = useState(false); //darkmode
-
-  // const toggleDarkMode = () => {
-  //   setIsDarkMode((prevMode) => !prevMode);
-  // };
 
   return (
     <section className="sticky top-0 left-0 right-0 z-50 bg-white shadow-lg dark:shadow-gray-700/50 dark:bg-[#050e15]">
@@ -112,7 +101,10 @@ const Header = ({isDarkMode}) => {
               onClick={navVisibilityHandler}
             />
           ) : (
-            <AiOutlineMenu className="w-6 h-6 dark:text-white" onClick={navVisibilityHandler} />
+            <AiOutlineMenu
+              className="w-6 h-6 dark:text-white"
+              onClick={navVisibilityHandler}
+            />
           )}
         </div>
         <div
@@ -121,9 +113,21 @@ const Header = ({isDarkMode}) => {
           } transition-all duration-300 mt-[56px] lg:mt-0 bg-dark-hard dark:bg-[#050e15] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
         >
           <ul className="text-white items-center gap-y-5 lg:text-black dark:text-[#1E496A] flex flex-col lg:flex-row gap-x-2 font-semibold">
-            {NavItemsInfo.map((item) => (
-              <NavItem key={item.name} item={item} />
-            ))}
+            {NavItemsInfo.map((item) => {
+              if (
+                item.name === "Pricing" &&
+                !(userState.userInfo?.admin || userState.userInfo?.member)
+              ) {
+                return (
+                  <NavItem key={item.name} item={item} />
+                );
+              } else if (item.name !== "Pricing") {
+                return (
+                  <NavItem key={item.name} item={item} />
+                );
+              }
+              return null;
+            })}
           </ul>
           {userState.userInfo ? (
             <div className="text-white items-center gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row gap-x-2 font-semibold">
@@ -149,6 +153,15 @@ const Header = ({isDarkMode}) => {
                           className="hover:bg-dark-hard dark:hover:bg-[#3a576d] hover:text-white px-4 py-2 text-white lg:bg-transparent bg-light-pink dark:bg-[#9aa9b4] lg:text-black dark:text-[#1E496A]"
                         >
                           Admin Dashboard
+                        </button>
+                      )}
+                      {userState?.userInfo?.member && (
+                        <button
+                          onClick={() => navigate("/member")}
+                          type="button"
+                          className="hover:bg-dark-hard dark:hover:bg-[#3a576d] hover:text-white px-4 py-2 text-white lg:bg-transparent bg-light-pink dark:bg-[#9aa9b4] lg:text-black dark:text-[#1E496A]"
+                        >
+                          Member Dashboard
                         </button>
                       )}
                       <button

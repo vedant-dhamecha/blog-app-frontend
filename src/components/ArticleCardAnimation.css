@@ -1,0 +1,11 @@
+/* ArticleCardAnimation.css */
+.article-card {
+  perspective: 1000px;
+  transition: transform 0.3s, box-shadow 0.1s; /* Add transition for box-shadow */
+}
+
+.article-card:hover {
+  transform: scale(2) translateY(-100px) translateX(100px); /* Zoom in and lift the card slightly */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 
+              0 0 20px rgba(0, 0, 255, 0.5); /* Add a subtle shadow and a glowing effect */
+}

@@ -15,7 +15,7 @@ const Articles = ({isDarkMode}) => {
       toast.error(error.message);
     },
   });
-  console.log(isError);
+  // console.log(isError);
   return (
     <section className="flex flex-col container mx-auto px-5 py-10 dark:bg-[#050e15]">
       <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">

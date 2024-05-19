@@ -1,14 +1,35 @@
-import React from "react";
+// ArticleCard.js
+import React, { useRef } from "react";
 import { BsCheckLg } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
-
 import { images, stables } from "../constants";
 import { Link } from "react-router-dom";
+import "./ArticleCardAnimation.css"; // Import CSS file for animation
 
 const ArticleCard = ({ post, className, isDarkMode }) => {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // Calculate mouse position relative to the card
+    const y = e.clientY - rect.top;
+    const rotationX = (y - rect.height / 2) / 20; // Adjust rotation based on mouse position
+    const rotationY = (x - rect.width / 2) / 20;
+    card.style.transform = `perspective(1000px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    card.style.transform = "none"; // Reset transform when mouse leaves
+  };
+
   return (
     <div
-      className={`rounded-xl overflow-hidden dark:bg-[#0D0D0D] dark:shadow-gray-700/50 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] ${className}`}
+      className={`article-card ${className}`}
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <Link to={`/blog/${post.slug}`}>
         <img

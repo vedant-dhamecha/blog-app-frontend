@@ -122,7 +122,7 @@ const Footer = (isDarkMode) => {
             <AiFillHeart className="w-7 h-auto" />
           </div>
           <p className="font-bold text-[#5A7184]">
-            Copyright@2024 | Vedant Dhamecha
+            Copyright@2024 All Rights Reserved
           </p>
         </div>
       </footer>

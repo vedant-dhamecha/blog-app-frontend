@@ -6,14 +6,14 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 
-const AdminLayout = () => {
+const MemberLayout = () => {
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user);
-  const userRole = userState?.userInfo?.admin;
+  const userRole = userState?.userInfo?.member;
 
   useEffect(() => {
     if (!userRole) {
-      toast.error("You are not allowed to access the admin panel");
+      toast.error("You are not allowed to access the member panel");
       navigate("/login"); // Redirect to homepage
     }
   }, [userRole, navigate]);
@@ -28,17 +28,17 @@ const AdminLayout = () => {
     },
     queryKey: ["profile"],
     onSuccess: (data) => {
-      if (!data?.admin) {
-        toast.error("You are not allowed to access the admin panel");
-        navigate("/"); // Redirect to homepage
+      if (!data?.member) {
+        navigate("/");
+        toast.error("Your are not allowed to access member panel");
       }
     },
     onError: (err) => {
       console.log(err);
       navigate("/");
-      toast.error("You are not allowed to access the admin panel");
+      toast.error("Your are not allowed to access member panel");
     },
-    enabled: userRole === true, // Only fetch profile data if user is admin
+    enabled: userRole === true, // Only fetch profile data if user is member
   });
 
   if (profileIsLoading) {
@@ -52,11 +52,11 @@ const AdminLayout = () => {
   return (
     <div className="flex flex-col h-screen lg:flex-row">
       <Header />
-      <main className="flex-1 p-4 lg:p-6">
+      <main className=" flex-1 p-4 lg:p-6">
         <Outlet />
       </main>
     </div>
   );
 };
 
-export default AdminLayout;
+export default MemberLayout;

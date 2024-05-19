@@ -80,8 +80,9 @@ const Users = () => {
         "Name",
         "Email",
         "Created At",
-        "is Verified",
-        "is Admin",
+        "Verified",
+        "Member",
+        "Admin",
         "",
       ]}
       isLoading={isLoading}
@@ -129,6 +130,11 @@ const Users = () => {
           <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
             <p className="text-gray-900 whitespace-no-wrap">
               {user.verified ? "✅" : "❌"}
+            </p>
+          </td>
+          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+            <p className="text-gray-900 whitespace-no-wrap">
+              {user.member ? "✅" : ""}
             </p>
           </td>
           <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
